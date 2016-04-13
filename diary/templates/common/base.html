@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<!--
+	Striped by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="{% static 'common/main.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}"/>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
+</head>
+<body>
+
+<!-- Content -->
+<div id="content">
+    <div class="inner">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+
+<!-- Sidebar -->
+<div id="sidebar">
+    <!-- Logo -->
+    <h1 id="logo"><a href="{% url 'diary:list' %}">JH^^</a></h1>
+
+    <!-- Nav -->
+    <nav id="nav">
+        {% include 'common/navigation.html' %}
+    </nav>
+
+    <!-- Search -->
+    <section class="box search">
+        {% include 'common/search.html' %}
+    </section>
+
+    <!-- Text -->
+    <section class="box text-style1">
+        {% include 'common/text.html' %}
+    </section>
+
+    <!-- Recent Posts -->
+    <section class="box recent-posts">
+        {% include 'common/recent-posts.html' %}
+    </section>
+
+    <!-- Recent Comments -->
+    <section class="box recent-comments">
+        {% include 'common/recent-comments.html' %}
+    </section>
+
+    <!-- Calendar -->
+    <section class="box calendar">
+        {% include 'common/calendar.html' %}
+    </section>
+
+    <!-- Copyright -->
+    <ul id="copyright">
+        {% include 'common/copyright.html' %}
+    </ul>
+
+</div>
+
+<!-- Scripts -->
+{% include 'common/scripts.html' %}
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% extends 'common/base.html' %}
+
+{% block title %} diary list~^^ {% endblock %}
+
+{% block content %}
+
+{% if diary_list %}
+
+<article class="box post post-excerpt">
+    <div class="info">
+        <span class="date">
+        <a href="{% url 'diary:new' %}">New write!</a> </span>
+    </div>
+
+</article>
+<ul>
+
+    <table>
+        {% for diary in diary_list %}
+        <tr>
+            <td>
+                <h2>
+                    <a href="{% url 'diary:detail' diary.pk %}">
+                        {{ diary.title }}
+                        <small>- {{ diary.create_date }}</small>
+                    </a>
+                </h2>
+
+                <p>{{ diary.subtitle }}</p>
+
+            </td>
+            <td>
+                <form action="{% url 'diary:update' diary.pk %}" method="post">{% csrf_token %}
+                    <input type="submit" value="Update"/>
+                </form>
+                <!--delete method call 안됨.-->
+                <form action="{% url 'diary:delete' diary.pk %}" method="post">{% csrf_token %}
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+</ul>
+{% else %}
+<h1>no data</h1>
+{% endif %}
+
+
+{% endblock %}
