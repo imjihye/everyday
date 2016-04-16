@@ -1,3 +1,4 @@
+from diary.forms import DiaryForm
 from django.core.urlresolvers import reverse_lazy
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
@@ -20,27 +21,27 @@ class DiaryListView(generic.ListView):
 
 class DiaryCreateView(generic.CreateView):
     model = Diary
-    fields = ['title', 'subtitle', 'contents', ]
+    form_class = DiaryForm
 
     def get_success_url(self):
         return reverse_lazy('diary:list')
 
-    def form_invalid(self, form):
-        print('call form invalid')
-
-    # validation 항목은 어떻게 정하나?
-    def form_valid(self, form):
-        return super(DiaryCreateView, self).form_valid(form)
-
-    # post함수가 있으면 form_valid함수가 호출되지 않음.
-    def postt(self, request):
-        # 한번에 inset하고 싶다!
-        data = request.POST
-        Diary(title=data['title'],
-              subtitle=data['subtitle'],
-              contents=data['contents']).save()
-
-        return HttpResponseRedirect(reverse_lazy('diary:list'))
+    # # def form_invalid(self, form):
+    # #     print('call form invalid')
+    # #
+    # # # validation 항목은 어떻게 정하나?
+    # def form_valid(self, form):
+    #     return super(DiaryCreateView, self).form_valid(form)
+    #
+    # # post함수가 있으면 form_valid함수가 호출되지 않음.
+    # def postt(self, request):
+    #     # 한번에 inset하고 싶다!
+    #     data = request.POST
+    #     Diary(title=data['title'],
+    #           subtitle=data['subtitle'],
+    #           contents=data['contents']).save()
+    #
+    #     return HttpResponseRedirect(reverse_lazy('diary:list'))
 
 
 class DiaryUpdateView(generic.UpdateView):
