@@ -30,16 +30,17 @@
 
             </td>
             <td>
-                <form action="{% url 'diary:update' diary.pk %}" method="post">{% csrf_token %}
-                    <input type="submit" value="Update"/>
-                </form>
-                <!--delete method call 어떻게 해?.-->
-                <form action="{% url 'diary:delete' diary.pk %}" method="post">{% csrf_token %}
-                    <input type="submit" value="Delete"/>
-                </form>
+                <a href="{% url 'diary:update' diary.pk %}">
+                    Update</a>
+                <a href="{% url 'diary:delete' diary.pk %}">
+                    Delete</a>
+                <!--&lt;!&ndash;delete method call 어떻게 해?.&ndash;&gt;-->
+                <!--<form action="{% url 'diary:delete' diary.pk %}" method="post">{% csrf_token %}-->
+                <!--<input type="submit" value="Delete"/>-->
+                <!--</form>-->
             </td>
         </tr>
-    {% endfor %}
+        {% endfor %}
     </table>
 
 </ul>

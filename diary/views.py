@@ -48,7 +48,7 @@ class DiaryUpdateView(generic.UpdateView):
     # This field is required. 이거 왜 있음?
     # update필드 기존 저장된 값은 어떻게 가져오지?
     model = Diary
-    fields = ['title', 'subtitle', 'contents', ]
+    form_class = DiaryForm
     template_name_suffix = '_update_form'
 
     def get_success_url(self):
