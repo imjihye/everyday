@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -16,7 +16,17 @@ def index(request):
 class DiaryListView(generic.ListView):
     model = Diary
     ordering = '-create_date'
+
+    # queryset = Diary.objects.order_by('-create_date')
+
+
     # create_time 형식 변경하고 싶음.. strftime("%y/%m/%d")
+    def headd(self, *args, **kwargs):
+        last_book = self.get_queryset().latest('publication_date')
+        response = HttpResponse('')
+        # RFC 1123 date format
+        response['Last-Modified'] = last_book.publication_date.strftime('%a, %d %b %Y %H:%M:%S GMT')
+        return response
 
 
 class DiaryCreateView(generic.CreateView):
@@ -24,10 +34,10 @@ class DiaryCreateView(generic.CreateView):
     fields = ['title', 'subtitle', 'contents', ]
 
     def get_success_url(self):
-        return reverse('diary:list')
+        return reverse_lazy('diary:list')
 
-    # def form_invalid(self, form):
-    #     print('call form invalid')
+    def form_invalid(self, form):
+        print('call form invalid')
 
     # validation 항목은 어떻게 정하나?
     def form_valid(self, form):
@@ -41,7 +51,7 @@ class DiaryCreateView(generic.CreateView):
               subtitle=data['subtitle'],
               contents=data['contents']).save()
 
-        return HttpResponseRedirect(reverse('diary:list'))
+        return HttpResponseRedirect(reverse_lazy('diary:list'))
 
 
 class DiaryUpdateView(generic.UpdateView):
@@ -52,15 +62,25 @@ class DiaryUpdateView(generic.UpdateView):
     template_name_suffix = '_update_form'
 
     def get_success_url(self):
-        return reverse('diary:list')
+        return reverse_lazy('diary:list')
 
 
 class DiaryDeleteView(generic.DeleteView):
     model = Diary
 
     def get_success_url(self):
-        return reverse('diary:list')
+        return reverse_lazy('diary:list')
 
 
 class DiaryDetailView(generic.DetailView):
+    # delete view가 불리지 않음
     model = Diary
+
+
+    def get_queryset(self):
+        print(self.__dict__)
+        print(self.args)
+        #self.publisher = get_object_or_404(Publisher, name=self.args[0])
+        return Diary.objects.all()
+
+
