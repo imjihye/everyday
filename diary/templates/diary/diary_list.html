@@ -22,7 +22,7 @@
                 <h2>
                     <a href="{% url 'diary:detail' diary.pk %}">
                         {{ diary.title }}
-                        <small>- {{ diary.create_date }}</small>
+                        <small>- {{ diary.create_date|date:"D d M Y" }}</small>
                     </a>
                 </h2>
 

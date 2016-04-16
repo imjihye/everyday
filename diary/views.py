@@ -17,17 +17,6 @@ class DiaryListView(generic.ListView):
     model = Diary
     ordering = '-create_date'
 
-    # queryset = Diary.objects.order_by('-create_date')
-
-
-    # create_time 형식 변경하고 싶음.. strftime("%y/%m/%d")
-    def headd(self, *args, **kwargs):
-        last_book = self.get_queryset().latest('publication_date')
-        response = HttpResponse('')
-        # RFC 1123 date format
-        response['Last-Modified'] = last_book.publication_date.strftime('%a, %d %b %Y %H:%M:%S GMT')
-        return response
-
 
 class DiaryCreateView(generic.CreateView):
     model = Diary
