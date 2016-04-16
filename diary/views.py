@@ -45,10 +45,11 @@ class DiaryCreateView(generic.CreateView):
 
 
 class DiaryUpdateView(generic.UpdateView):
-    # This field is required. 이거 모임?
-    # update필드 데이터 어떻게 가져오지.?
+    # This field is required. 이거 왜 있음?
+    # update필드 기존 저장된 값은 어떻게 가져오지?
     model = Diary
     fields = ['title', 'subtitle', 'contents', ]
+    template_name_suffix = '_update_form'
 
     def get_success_url(self):
         return reverse('diary:list')

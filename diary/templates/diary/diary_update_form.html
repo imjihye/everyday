@@ -4,10 +4,12 @@
 
 {% block content %}
 
+{{ diary.title }}..!!!!
+
 <!--form method - put call하는방법은..?-->
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Save" />
+    <input type="submit" value="Update" />
 </form>
 
 {% endblock %}

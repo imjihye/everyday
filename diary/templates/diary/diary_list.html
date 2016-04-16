@@ -33,7 +33,7 @@
                 <form action="{% url 'diary:update' diary.pk %}" method="post">{% csrf_token %}
                     <input type="submit" value="Update"/>
                 </form>
-                <!--delete method call 안됨.-->
+                <!--delete method call 어떻게 해?.-->
                 <form action="{% url 'diary:delete' diary.pk %}" method="post">{% csrf_token %}
                     <input type="submit" value="Delete"/>
                 </form>
