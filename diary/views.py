@@ -63,14 +63,4 @@ class DiaryDeleteView(generic.DeleteView):
 
 
 class DiaryDetailView(generic.DetailView):
-    # delete view가 불리지 않음
     model = Diary
-
-
-    def get_queryset(self):
-        print(self.__dict__)
-        print(self.args)
-        #self.publisher = get_object_or_404(Publisher, name=self.args[0])
-        return Diary.objects.all()
-
-
