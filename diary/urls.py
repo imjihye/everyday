@@ -19,9 +19,9 @@ from . import views
 app_name = 'diary'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^diaries/$',
+    url(r'^list/$',
         views.DiaryListView.as_view(), name='list'),
-    url(r'^diaries/new/$',
+    url(r'^new/$',
         views.DiaryCreateView.as_view(), name='new'),
     url(r'^diaries/(?P<pk>[0-9]+)/update/$',
         views.DiaryUpdateView.as_view(), name='update'),

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>JH Sense!</title>
+  	{% load static %}
+
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="{% static 'base.css' %}" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+<body>
+<section>
+    <header>
+      <nav class="navbar navbar-light">
+        <a href="http://im.jihye.me" class="navbar-brand">Jihye Toy</a>
+    </nav>
+    </header>
+    <section class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="content">
+			{% block content %}
+
+
+			{% endblock %}
+          </div>
+        </div>
+    </div>
+    </section>
+  </section>
+
+  <footer>
+    <p>
+      Copyright 2016 &copy; 
+      All rights reserved. 
+      <a href="mailto:im@jihye.me">im@jihye.me</a>
+    </p>
+  </footer>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'sense/base.html' %}
+
+{% block content %}
+
+{% if sense_list %}
+
+
+
+{% else %}
+No sense list...
+<a href="{% url 'sense:create' %}">create!</a>
+{% endif %}
+
+{% endblock %}
