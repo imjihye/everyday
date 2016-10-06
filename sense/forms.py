@@ -5,4 +5,4 @@ from django import forms
 class CreateForm(ModelForm):
 	class Meta:
 		model = Sense
-		fields = ['title']
+		fields = ['title', 'subtitle', 'contents']

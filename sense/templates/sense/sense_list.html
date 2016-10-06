@@ -3,8 +3,20 @@
 {% block content %}
 
 {% if sense_list %}
-
-
+<table>
+	{% for sense in sense_list %}
+	 <tr>
+	 	<td>
+		 	<h2>{{ sense.title }}</h2>
+		 	<p>{{ sense.subtitle }}</p>
+	 	</td>
+	 	<td>
+		 	<a href="{% url 'sense:update' %}">update</a>
+		 	<a href="{% url 'sense:delete' %}">delete</a>
+	 	</td>
+	</tr>
+	{% endfor %}
+</table>
 
 {% else %}
 No sense list...
