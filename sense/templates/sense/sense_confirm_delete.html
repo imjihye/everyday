@@ -1,0 +1,12 @@
+{% extends 'sense/base.html' %}
+
+{% block content %}
+
+진짜!?
+<form method="post">
+    {{ from.as_p }}
+    {% csrf_token %}
+    <button class="btn btn-default" type="submit">Delete</button>
+</form>
+
+{% endblock %}

@@ -11,8 +11,8 @@
 		 	<p>{{ sense.subtitle }}</p>
 	 	</td>
 	 	<td>
-		 	<a href="{% url 'sense:update' %}">update</a>
-		 	<a href="{% url 'sense:delete' %}">delete</a>
+		 	<a href="{% url 'sense:update' sense.pk %}">update</a>
+		 	<a href="{% url 'sense:delete' sense.pk %}">delete</a>
 	 	</td>
 	</tr>
 	{% endfor %}
