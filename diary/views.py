@@ -7,9 +7,6 @@ from django.shortcuts import render
 from django.views import generic
 from diary.models import Diary
 
-
-# 배포하고 싶어요
-
 def index(request):
     return render(request, 'common/index.html', {'message': 'Hi~!'})
 
@@ -26,27 +23,8 @@ class DiaryCreateView(generic.CreateView):
     def get_success_url(self):
         return reverse_lazy('diary:list')
 
-    # # def form_invalid(self, form):
-    # #     print('call form invalid')
-    # #
-    # # # validation 항목은 어떻게 정하나?
-    # def form_valid(self, form):
-    #     return super(DiaryCreateView, self).form_valid(form)
-    #
-    # # post함수가 있으면 form_valid함수가 호출되지 않음.
-    # def postt(self, request):
-    #     # 한번에 inset하고 싶다!
-    #     data = request.POST
-    #     Diary(title=data['title'],
-    #           subtitle=data['subtitle'],
-    #           contents=data['contents']).save()
-    #
-    #     return HttpResponseRedirect(reverse_lazy('diary:list'))
-
 
 class DiaryUpdateView(generic.UpdateView):
-    # This field is required. 이거 왜 있음?
-    # update필드 기존 저장된 값은 어떻게 가져오지?
     model = Diary
     form_class = DiaryForm
     template_name_suffix = '_update_form'
